@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { api } from '../../utils/api'
 
 const s = {
   page: {
