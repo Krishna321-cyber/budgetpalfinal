@@ -42,7 +42,10 @@ authCtrl.signup = async (req, res) => {
     "INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)",
     [name, email, hashed, role],
     (err) => {
-      if (err) return res.status(500).json({ error: "User already exists" });
+     if (err) {
+  console.error("Signup DB error:", err.message);
+  return res.status(500).json({ error: "Database error: " + err.message });
+}
       res.status(200).json({ message: "User created" });
     }
   );
