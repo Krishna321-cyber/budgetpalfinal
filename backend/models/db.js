@@ -1,10 +1,11 @@
 import mysql from "mysql2";
 
 const db = mysql.createConnection({
-  host: "127.0.0.1",
-  user: "root",
-  password: "Krishna1@_",
-  database: "BudgetPal"
+  host: process.env.DB_HOST || "127.0.0.1",
+  port: parseInt(process.env.DB_PORT) || 3306,
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASSWORD || "Krishna1@_",
+  database: process.env.DB_NAME || "BudgetPal",
 });
 
 db.connect((err) => {
@@ -13,4 +14,3 @@ db.connect((err) => {
 });
 
 export default db;
-
