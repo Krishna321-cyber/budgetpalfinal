@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { api } from '../../utils/api'
 
 const s = {
   page: {
@@ -95,8 +94,7 @@ const Signup = () => {
     const role = adminPassword === 'ADMINAUTH' ? 'admin' : 'user';
     setLoading(true);
     try {
-      const response = await fetch('/api/auth/signup', {
-        method: 'POST',
+      const response = await fetch('https://budgetpalfinal-2.onrender.com/api/auth/signup', {        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password, role }),
       });
